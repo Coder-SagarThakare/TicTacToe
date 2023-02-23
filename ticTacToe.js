@@ -3,6 +3,7 @@ var count = 0;
 
 var player1 = { name: "player1", 0: [] };
 var player2 = { name: "player2", 0: [] };
+
 var resultArr = [
   [1, 2, 3],
   [4, 5, 6],
@@ -18,14 +19,14 @@ console.log(grid);
 
 for (let i = 0; i < grid.length; i++)
   grid[i].addEventListener("click", (event) => {
-    if (grid[i].classList.contains("player1Click") == false && count % 2 == 0) {
+    if (grid[i].classList.contains("player1Click") == false && count % 2 == 1) {
       grid[i].classList.add("player2Click");
       grid[i].innerHTML = "O";
       count++;
       player2[0].push(i + 1);
     } else if (
       grid[i].classList.contains("player2Click") == false &&
-      count % 2 == 1
+      count % 2 == 0
     ) {
       grid[i].classList.add("player1Click");
       grid[i].innerHTML = "X";
@@ -42,13 +43,19 @@ for (let i = 0; i < grid.length; i++)
 function checkResult() {
   if (this[0].length > 2) {
     console.log(this[0]);
-    console.log(resultArr[0]);
 
-    // console.log("ans",this[0] === resultArr[0]);
     resultArr.forEach((element) => {
-      if (JSON.stringify(this[0]) === JSON.stringify(element)) {
-        console.log('true');
-      }
+      // console.log(element);
+      let count = 0;
+
+      element.forEach((element, i) => {
+        this[0].forEach((items) => {
+          if (items == element) count++;
+          console.log("count++");
+        });
+      });
+
+      if (count == 3) console.log("winner : ", this.name);
     });
   }
 }
