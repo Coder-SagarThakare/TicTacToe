@@ -17,7 +17,7 @@ var resultArr = [
 
 console.log(grid);
 
-for (let i = 0; i < grid.length; i++)
+for (let i = 0; i < grid.length; i++){
   grid[i].addEventListener("click", (event) => {
     if (grid[i].classList.contains("player1Click") == false && count % 2 == 1) {
       grid[i].classList.add("player2Click");
@@ -33,14 +33,18 @@ for (let i = 0; i < grid.length; i++)
       count++;
       player1[0].push(i + 1);
     }
+    grid[i].animate(gridAnimation,200)
 
     if (count > 4) {
-      checkResult.call(player1);
-      checkResult.call(player2);
+      checkResult.call(player1,i);
+      checkResult.call(player2,i);
     }
-  });
 
-function checkResult() {
+  });
+}
+ 
+
+function checkResult(i) {
   if (this[0].length > 2) {
     console.log(this[0]);
 
@@ -51,11 +55,21 @@ function checkResult() {
       element.forEach((element, i) => {
         this[0].forEach((items) => {
           if (items == element) count++;
-          console.log("count++");
+          // console.log("count++");
         });
       });
 
-      if (count == 3) console.log("winner : ", this.name);
+      if (count == 3) {
+        console.log("winner : ", this.name);
+       
+        // console.log(grid[i]);
+      }
     });
   }
 }
+
+const gridAnimation = [
+   { color : 'blue',fontSize : '0px'},
+   {color: 'blue',fontSize : '2000%'},
+   {color: 'white'}
+]

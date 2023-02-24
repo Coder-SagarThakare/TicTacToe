@@ -20,6 +20,7 @@
     /* repeat(no. of column , size of column) if tou want extra column of diff size (wecan use px, %, fr ) , fr = fraction*/
     grid-template-columns:1fr repeat(2,1fr) ;  
     grid-template-rows: repeat(3,1fr);
+    cursor: cell;
     row-gap: 1%;
     column-gap: 1%;
     box-sizing: border-box; 
@@ -41,7 +42,7 @@
 
 .player1Click, .player2Click {
 
-    font-size: 50px;
+    /* font-size: auto; */
     text-align: center;
     display: flex;
     justify-content: center;
