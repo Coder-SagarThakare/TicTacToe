@@ -24,6 +24,8 @@ for (let i = 0; i < grid.length; i++){
       grid[i].innerHTML = "O";
       count++;
       player2[0].push(i + 1);
+    grid[i].animate(gridAnimationPlayer2,200)
+
     } else if (
       grid[i].classList.contains("player2Click") == false &&
       count % 2 == 0
@@ -32,8 +34,10 @@ for (let i = 0; i < grid.length; i++){
       grid[i].innerHTML = "X";
       count++;
       player1[0].push(i + 1);
+      grid[i].animate(gridAnimationPlayer1,200)
+
     }
-    grid[i].animate(gridAnimation,200)
+    // grid[i].animate(gridAnimationPlayer2,200)
 
     if (count > 4) {
       checkResult.call(player1,i);
@@ -49,27 +53,29 @@ function checkResult(i) {
     console.log(this[0]);
 
     resultArr.forEach((element) => {
-      // console.log(element);
-      let count = 0;
+        let count = 0;
 
       element.forEach((element, i) => {
         this[0].forEach((items) => {
           if (items == element) count++;
-          // console.log("count++");
         });
       });
 
       if (count == 3) {
         console.log("winner : ", this.name);
        
-        // console.log(grid[i]);
       }
     });
   }
 }
 
-const gridAnimation = [
-   { color : 'blue',fontSize : '0px'},
-   {color: 'blue',fontSize : '2000%'},
-   {color: 'white'}
+const gridAnimationPlayer2 = [
+   { color : 'yellow',fontSize : '0px'},
+   {color: 'yellow',fontSize : '1500%'},
+  //  {color: 'white'}
+]
+const gridAnimationPlayer1 = [
+  { color : 'rgb(255, 112, 112)',fontSize : '0px'},
+  {color: 'rgb(255, 112, 112)',fontSize : '1500%'},
+ //  {color: 'white'}
 ]
